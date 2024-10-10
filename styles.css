@@ -1,0 +1,895 @@
+*
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: left; /* Center the entire navbar */
+    align-items: left; /* Vertically center items */
+    background-color: black; /* Background color of the navbar */
+    padding: 40px 20px; /* Padding for the navbar */
+}
+.nav-links {
+    list-style: none; /* Remove bullets from the list */
+    display: flex; /* Use flexbox for alignment */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+.nav-links li {
+    margin: 0; /* Spacing between buttons */
+    position: center;
+}
+.nav-links a {
+    color: rgb(0, 0, 0); /* Link color */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 10px; /* Font size for navigation links */
+    padding: 2px 2px; /* Padding around links */
+    transition: background-color 0.3s; /* Transition effect for hover */
+}
+.nav-links a:hover {
+    background-color: rgb(0, 0, 0); /* Background color on hover */
+    border-radius: 5px; /* Rounded corners for hover effect */
+
+}
+.logo {
+    position: absolute; /* Position logo separately */
+    left: 200px; /* Adjust as needed for spacing */
+}
+.logo{
+    font-size: 30px;
+    color:hotpink;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+.logo:hover{
+    color:white;
+    text-shadow: 0 0 25px white,
+                 0 0 50px white;
+    transform: scale(1.1);
+}
+span{
+    color: rgb(255, 255, 255);
+}
+.navbar a{
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    margin: 10px;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease;
+}
+.navbar a:hover,
+.navgar a.active{
+    color:hotpink;
+   
+}
+/*---------------------------------------ENDING----------------------------------------*/
+
+
+
+/*-----------------------------------CART-ICON-IMAGE----------------------------------*/
+#cart-icon {
+    position: absolute; /* Allow free positioning */
+    right: 480x; /* Moves it to the right edge, adjust the value as needed */
+    top: 15px;  /* Adjusts the vertical position */
+    width: 70px;  /* Set the desired width */
+    height: auto; /* Auto adjusts the height based on the aspect ratio */
+}
+/*---------------------------------------ENDING----------------------------------------*/
+
+
+
+/*-----------------------------------------HOME.HTML-----------------------------------------*/
+.home-header {
+    background: url('rain.mp4'); /* Add the background image */
+    background-size: cover;
+    background-position: center;
+    color:rgb(255, 255, 255); /* Change text color as needed */
+    text-align: center; /* Center the text */
+    font-size: 20px;
+    padding: 100px 20px; /* Adjust padding as needed */
+    min-height: 500px; /* Set a minimum height for the header */
+}
+.home-header h1{
+    font-size: 40px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); /* Add shadow effect */
+    font-family: 'Lobster', cursive; /* Apply the chosen font */
+}
+.home-header p{
+    text-align: center;
+    color:rgb(255, 255, 255); /* Change text color as needed */
+    font-size: 24px;
+    margin-top: 15px;
+}
+/* Video background style */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1; /* Ensure the video stays in the background */
+    filter: brightness(40%); /* Reduces brightness by 50%, adjust as needed */
+}
+/* Shop Now button styling */
+.shop-now-btn {
+    padding: 8px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #f79cc9; /* Pink color that matches your theme */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.shop-now-btn:hover {
+    background-color: #fb00cd; /* Slightly darker pink on hover */
+}
+/*-------------------------------------------ENDING------------------------------------------*/
+
+
+
+/*----------------------------------------ABOUT.HTML------------------------------------------*/
+.about-header {
+    background-image: url('pink background.jpg'); /* Replace with your image path */
+    padding: 30px 0;
+    text-align: center;
+    font-size: 23px;
+    font-family: 'Lobster', cursive; /* Apply the chosen font */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+    color: #ffffff;
+    margin: 0px 0; /* Add spacing as needed */
+}
+.about-images {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+.about-images .image-item {
+    width: 30%;
+    text-align: center;
+}
+.about-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.slider-container {
+    width: 100%;
+    overflow: hidden; /* Hide the overflow outside the container */
+}
+.slider {
+    display: flex; /* Display images in a row */
+    flex-wrap: nowrap; /* Ensure they stay in a single row */
+    animation: slide 30s linear infinite; /* Continuous sliding animation */
+}
+.slide {
+    flex: 0 0 auto; /* Ensure the images don't shrink or grow */
+  
+}
+.slider img {
+    width: 240px;           /* Set a fixed width for the images */
+    height: 400px;         /* Set a fixed height for the images */
+    object-fit: cover;     /* This will crop the images to fill the container */
+    position: relative;     /* Keeps the images positioned relative to their container */
+    filter: saturate(10%); /* Applies a filter to reduce color saturation */
+    transition: 0.7s;      /* Smooth transition for any changes in properties */
+    background-color: black;/* Fallback background color */
+    border-radius: 10px;   /* Rounds the corners of the images */
+    top: -10px; /* Adjust this value as needed */
+}
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+.about-section {
+    width: 100%;
+    padding: 20px;
+}
+.about-row {
+    display: flex;
+    justify-content: center; /* Center the entire row */
+    align-items: center;     /* Center vertically */
+    gap: 20px;               /* Add some space between columns */
+}
+.about-text, .about-team {
+    width: 35%;                /* Width of each column */
+    text-align: center;         /* Center text content */
+    margin: auto;               /* Ensure the div is centered */
+}
+.about-text h2, .about-team h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.about-text p, .about-team p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;        /* Justify the paragraph text */
+}
+@media (max-width: 768px) {
+    /* Stack the sections on smaller screens */
+    .about-row {
+        flex-direction: column;
+    }
+    .about-text, .about-team {
+        width: 70%;
+    }
+}
+/*-------------------------------------------ENDING------------------------------------------*/
+
+
+/*-----------------------------------ABOUT.HTML-----------------------------------*/
+.lookbook-section{
+    background-image: url('Fasion.png');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px; /* Adjust padding as needed */
+    min-height: 500px; /* Set a minimum height for the header */
+}
+/*------------------------------------ENDING-------------------------------------*/
+
+
+
+/*---------------------------------SHOP.HTML--------------------------------*/
+.shop-section {
+    padding: 50px;
+    background-color: #fff;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+/* Product Grid */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    transform: translateY(-100px);
+}
+.product {
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px hotpink;
+   
+}
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}   
+.product h2 {
+    font-size: 19px;
+    margin: 20px 0;
+    color: hotpink;
+}
+.product p {
+    margin: 5px 0;
+    font-size: 15px;
+    margin: 10px 0;
+}
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1em; /* Increase button text size */
+}
+.product select, 
+.product button {
+    margin: 4px 0;
+    padding: 7px;
+    width: 60%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.product .add-to-cart,
+.product .buy-now{
+    background-color: hotpink;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+.product .buy-now {
+    background-color: #363636;
+}
+.product .add-to-cart:hover {
+    background-color: #c1004d;
+}
+.product .buy-now:hover {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+}
+.search-container {
+    position: relative;
+    width: 100%; /* Adjust this as needed */
+}
+.search-container input {
+    width: 100%; /* Make sure input fills the container */
+    padding-right: 40px; /* Adjust padding to make space for the icon */
+    padding: 10px;
+    font-size: 16px;
+    border: 10px solid #ffffff;
+    border-radius: 4px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 600px; /* Adjust the position relative to input */
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: hotpink;
+}
+/*-------------------------------------ENDING--------------------------------------*/
+
+
+
+/*---------------------------------CONTACT.HTML--------------------------------*/
+.contact-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.discussion-area {
+    width: 50%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.contact-info {
+    margin-top: 20px;
+}
+.contact-info p {
+    display: flex;
+    align-items: center;
+}
+.contact-info img {
+    width: 20px; /* Adjust icon size */
+    height: 20px; /* Adjust icon size */
+    margin-right: 10px; /* Space between icon and text */
+}
+.contact-form {
+    width: 45%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+.contact-form input, 
+.contact-form textarea {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.contact-form button {
+    padding: 10px;
+    background-color: pink;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.contact-form button:hover {
+    background-color: gold;
+}
+.contact-page{
+    background-image: url('image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px; /* Adjust padding as needed */
+    min-height: 450px; /* Set a minimum height for the header */
+}
+/*-------------------------------------ENDING--------------------------------------*/
+
+
+
+/*-----------------------------------CART.HTML----------------------------------*/
+.cart-section {
+    max-width: 800px;
+    margin: auto;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align all text inside this section */
+}
+.cart-section h1 {
+    color: #333; /* Change color as needed */
+}
+#cart-items {
+    margin-bottom: 20px; /* Space below cart items */
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align cart items */
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.cart-item img {
+    width: 100px; /* Set the size of the product image */
+    height: auto;
+    margin-right: 10px;
+
+}
+.cart-item p {
+    margin: 0;
+    flex: 1; /* Allows the paragraph to take up the remaining space */
+    text-align: center; /* Keep text left aligned within the item */
+}
+.item-checkbox {
+    margin-right: 20px; /* Add space between checkbox and product details */
+}
+.total-amount {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: center; /* Center total amount text */
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1em;
+    transition: background-color 0.5s ease; /* Smooth transition for hover */
+}
+#delete-selected {
+    background-color: #363636; /* Same as "Buy Now" */
+    color: white;
+}
+#delete-selected:hover {
+    background-color: #000000; /* Darker black on hover */
+}
+#proceed-checkout {
+    background-color: hotpink; /* Same as "Add to Cart" */
+    color: white;
+}
+#proceed-checkout:hover {
+    background-color: #c1004d; /* Darker pink on hover */
+}
+.cart-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.cart-buttons button {
+    margin: 0 10px;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 10vh; /* Adjust as needed for vertical centering */
+    margin-top: 50px;
+}
+.search-container {
+    text-align: center;
+    margin-top: 50px;
+}
+#mySearch {
+    width: 30%;
+    padding: 15px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px rgba(255, 144, 214, 0.1);
+}
+#mySearch:focus {
+    outline: none;
+    border-color: hotpink;
+}
+.filter-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.filter-container select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 0 10px;
+}
+/*-------------------------------------ENDING------------------------------------*/
+
+
+
+/*---------------------------------FOOTER-SECTION--------------------------------*/
+.footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: black;
+}
+.footer .social{
+    text-align: center;
+    padding-bottom: 25px;
+    color: white;
+}
+.footer .social a{
+    font-size: 24px;
+    color: white;
+    border: 2px solid hotpink;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0;box-shadow: inset 0 0 10px hotpink, 0 0 10px hotpink;
+    transition: 0.3s ease;
+}
+.footer .social a:hover{
+    transform: scale(1.2)translate(-10px);
+    color: hotpink;
+    border: 2px solid hotpink;
+}
+.footer ul{
+    margin-top: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+.footer ul li a{
+    color: white;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease;
+}
+.footer ul li a:hover{
+    border-bottom: 3px solid hotpink;
+}
+.footer ul li{
+    display: inline-block;
+    padding: 0 15px;
+}
+.footer .copyright{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+/*-----------------------------------ENDING-----------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.checkout-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align all items */
+    padding: 20px; /* Add some padding */
+}
+
+.checkout-layout {
+    display: flex;
+    justify-content: space-around; /* Space out sections evenly */
+    width: 80%; /* Width of the layout */
+    margin: 20px 0; /* Margin for space between sections */
+}
+
+
+
+
+/*-----------------------------------DELIVERY INFORMATION-----------------------------------*/
+.delivery-info {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%; /* Adjusted width */
+    position: block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px; /* Space between sections */
+}
+
+/* Style adjustments for text labels and input fields */
+h2 {
+    text-align: center; /* Center titles */
+}
+
+label {
+    display: block; /* Block display for better spacing */
+    margin: 10px 0 5px; /* Margin for spacing */
+    font-weight: bold; /* Bold labels */
+}
+
+input, textarea {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Padding for inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 15px; /* Space below inputs */
+}
+#address {
+    height: 100px; /* Set a fixed height for the textarea */
+    resize: none; /* Disable resizing */
+    padding: 10px; /* Add padding for better text visibility */
+    border: 1px solid #ccc; /* Border for the textarea */
+    border-radius: 5px; /* Rounded corners */
+}
+/*-----------------------------------DELIVERY INFORMATION-----------------------------------*/
+
+
+
+/*-----------------------------------PAYMENT METHOD-----------------------------------*/
+.payment-method {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%; /* Adjusted width */
+    position: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px; /* Space between sections */
+    align-items: center;
+}
+
+
+
+.payment-method h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.payment-option {
+    display: -webkit-inline-box;
+    flex-direction: column; /* Makes the icons stack vertically */
+    align-items: center; /* Centers the icons horizontally */
+    padding: 10px 0;
+    margin-bottom: 5px;
+    margin-left: 22px;
+}
+.payment-option input[type="radio"] {
+    display: none; /* Hides the radio button */
+}
+
+.payment-option label {
+    display: block; /* Makes label fill its container */
+    cursor: pointer;
+    border: 2px solid transparent; /* Default border for unselected options */
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.payment-option label:hover {
+    border-color: #565555; /* Highlight border on hover */
+}
+
+.payment-option input[type="radio"]:checked + label {
+    border-color: #ff69b4; /* Pink border for selected option */
+}
+
+.payment-icon {
+    width: 50px; /* Adjust size for medium icon */
+    height: 50px; /* Maintain aspect ratio */
+    margin: 5px; /* Spacing between icons */
+}
+
+
+.payment-method form {
+    margin-top: 10px;
+}
+.center-text {
+    display: block; /* Make it a block element to allow centering */
+    text-align: center; /* Center the text */
+    margin-top: 5px; /* Optional: Adjust spacing if needed */   
+}
+
+
+
+
+
+
+
+
+
+.custom-dropdown {
+    position: relative;
+    margin-top: 40px; /* Space above dropdown */
+}
+
+.custom-dropdown .selected {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer; /* Pointer cursor for dropdown */
+}
+
+.custom-dropdown .options {
+    display: none; /* Hide dropdown options by default */
+    position: fixed;
+    background: white;
+    border: 1px solid #ccc;
+    width: 90%;
+    z-index: 50px; /* Dropdown appears above other elements */
+}
+
+.option {
+    padding: 10px;
+    display: flex;
+    align-items: center; /* Align icon with text */
+    cursor: pointer; /* Pointer cursor for options */
+}
+
+.option img {
+    width: 20px; /* Small icon size for options */
+    height: 20px; /* Small icon size for options */
+    margin-right: 10px; /* Space between image and text */
+}
+
+.option:hover {
+    background: #f1f1f1; /* Highlight effect on hover */
+}
+
+
+
+
+
+
+/*---------------------------------------------------------------------*/
+.order-summary {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%; /* Adjusted width */
+    position: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px; /* Space between sections */
+}
+
+
+.summary-details span{
+    color: red;
+}
+
+
+.summary-image img {
+    width: 100%; /* Responsive image */
+    border-radius: 8px; /* Rounded image */
+}
+
+.summary-details p {
+    font-size: 16px; /* Font size for details */
+    margin: 10px 0; /* Spacing between paragraphs */
+    text-align: left;
+}
+
+.total-amount {
+    font-size: 18px; /* Larger font for total amount */
+    font-weight: bold; /* Bold text */
+    margin-top: 15px; /* Space above total amount */
+    text-align: center;
+}
+.total-amount span{
+    color: red;
+}
+
+/* Button styles */
+.confirm-order,
+.edit-cart {
+    display: inline-block; /* Keep buttons in line */
+    background-color: #ffffff; /* Bootstrap primary blue */
+    color: rgb(0, 0, 0); /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+  
+    margin-top: 20px; /* Space above buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.confirm-order:hover,
+.edit-cart:hover {
+    color: #000000; /* Darker blue on hover */
+    background-color: rgb(230, 225, 225);
+}
+
+
+
+
+.confirm-order {
+    text-align: center;
+    margin-top: auto; /* Automatically push the section towards the bottom */
+    padding-bottom: 30px; /* Add some space above the footer */
+    position: relative; /* Ensure it's positioned properly in the flow */
+}
+
+button {
+  
+    background-color: rgb(255, 255, 255);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px; /* Space between the buttons */
+}
+
+button:hover {
+    background-color: rgb(235, 229, 229);
+}
+
+/* Ensure the entire layout pushes the buttons to the bottom */
+body, html {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1; /* Make the container take the remaining space */
+}
+
+
+
+
+
+.button-container {
+    text-align: center; /* Center the buttons horizontally */
+    margin-top: 20px;   /* Add some spacing above the buttons */
+}
+
+.button-container button {
+    padding: 10px 20px;
+    margin: 5px;       /* Add some spacing between the buttons */
+    font-size: 16px;   /* Adjust the font size if needed */
+    cursor: pointer;   /* Change the cursor to a pointer when hovering */
+    border-radius: 8px;
+}

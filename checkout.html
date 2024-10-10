@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valerie's Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+
+.payment-option {
+    margin-bottom: 10px;
+}
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000; /* To place it in front of everything */
+    border-radius: 10px;
+}
+
+.modal h3 {
+    text-align: center;
+}
+
+/* Modal close button */
+.close-modal {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-modal:hover {
+    color: red;
+}
+
+/* Overlay for background dimming */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+
+
+.e-wallet-options {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to new lines */
+    justify-content: center; /* Space items evenly */
+    margin: 20px 0; /* Spacing above and below options */
+    
+}
+
+.e-wallet-option {
+    flex: 1 1 30%; /* Allow 3 items per row with flex-grow and flex-shrink */
+    display: flex; /* Center align the icon within the div */
+    flex-direction: column; /* Align the icon and label vertically */
+    align-items: center; /* Center the items */
+    
+}
+
+
+.e-wallet-option.selected {
+    transform: scale(1.1); /* Slightly enlarge the selected option */
+    border: 50px solid #ff4081; /* Add a border to indicate selection */
+}
+
+.payment-icon {
+    width: 50px; /* Set your desired width */
+    height: auto; /* Keep aspect ratio */
+}
+
+
+
+
+.modal-footer {
+    text-align: center; /* Center the buttons */
+    margin-top: 20px; /* Spacing above buttons */
+}
+
+/* Other styles for summary items */
+.summary-items {
+    margin-top: 20px;
+}
+
+/* Center the modal footer buttons */
+.modal-footer button {
+    margin: 0 10px; /* Space between Okay and Cancel buttons */
+}
+
+
+/* Footer buttons */
+.modal-footer {
+    text-align: center; /* Center footer buttons */
+    margin-top: 20px; /* Space above footer */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-around; /* Even space between buttons */
+}
+
+button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(78, 78, 78);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px; /* Space between buttons */
+}
+
+button:hover {
+    color: rgb(0, 0, 0);
+}
+
+
+</style>
+</head>
+<body>
+
+
+
+
+
+    <video autoplay muted loop id="myVideo">
+        <source src="rain.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    <nav class="navbar">
+        
+        </div>
+        <ul class="nav-links">
+            <li><a href="/home.html">Back</a></li>
+        </ul>
+    </nav>
+    <div class="checkout-page">
+        <h1>Checkout</h1>
+    
+        <div class="checkout-layout">
+            <section class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="order-items"></div> <!-- Container for order items -->
+                <div class="total-amount">
+                    Total Amount: <span id="total-price"></span>
+                 <!-- Wrap buttons in a container -->
+    <div class="button-container">
+        <button class="edit-cart" onclick="editCart()">Edit Cart</button>
+        <button class="confirm-order" onclick="confirmOrder()">Confirm Order</button>
+    </div>
+</section>
+
+
+           
+          <script>
+            function displayOrderSummary() {
+                const orderItemsContainer = document.getElementById('order-items');
+                const totalPriceElement = document.getElementById('total-price');
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+                // Clear previous order items
+                orderItemsContainer.innerHTML = '';
+            
+                console.log('Cart items:', cart); // Debugging log
+            
+                if (cart.length === 0) {
+                    orderItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                    totalPriceElement.innerText = '₱0.00';
+                    return;
+                }
+            
+                let totalAmount = 0;
+            
+                 
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;  
+                    totalAmount += itemTotal;  
+            
+                    const itemDiv = document.createElement('div');
+                    itemDiv.innerHTML = `
+                        <p>${item.name} - Size: ${item.size}, Color: ${item.color}, Quantity: ${item.quantity}, Price: ₱${itemTotal.toFixed(2)}</p>
+                    `;
+                    orderItemsContainer.appendChild(itemDiv);
+                });
+            
+            
+                totalPriceElement.innerText = `₱${totalAmount.toFixed(2)}`;
+            }
+            
+          
+            document.addEventListener('DOMContentLoaded', displayOrderSummary);
+          </script>
+           
+
+
+          <script> 
+            function confirmOrder() {
+                 
+                let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+                let totalPrice = localStorage.getItem('totalPrice') || '0.00'; 
+            
+                console.log("Cart Items:", cartItems);   
+                console.log("Total Price:", totalPrice);  
+            
+                 
+                if (cartItems.length === 0) {
+                    alert("No items in the cart!");
+                    return;
+                }
+            
+                 
+                let orderItemsHTML = '';
+                cartItems.forEach(item => {
+                    orderItemsHTML += `<p>${item.name} - ${item.size} - ${item.color} - ${item.price}</p>`;
+                });
+                document.getElementById('order-items').innerHTML = orderItemsHTML;
+                document.getElementById('total-price').textContent = `$${totalPrice}`;
+            
+                let name = document.getElementById('delivery-name-input').value;
+                let address = document.getElementById('delivery-address-input').value;
+                let contact = document.getElementById('delivery-contact-input').value;
+            
+                console.log("Delivery Name:", name);  // Debugging: Check delivery info
+                console.log("Delivery Address:", address);
+                console.log("Delivery Contact:", contact);
+            
+                if (!name || !address || !contact) {
+                    alert("Please fill out the delivery information.");
+                    return; // Stop execution if the form is incomplete
+                }
+            
+                // Update the delivery info in the order summary
+                document.getElementById('delivery-name').textContent = name;
+                document.getElementById('delivery-address').textContent = address;
+                document.getElementById('delivery-contact').textContent = contact;
+            
+                // 5. Get the selected payment method
+                let selectedPayment = document.querySelector('input[name="payment-method"]:checked');
+                
+                if (!selectedPayment) {
+                    alert("Please select a payment method.");
+                    return;
+                }
+                
+                console.log("Selected Payment Method:", selectedPayment.value); // Debugging: Check selected payment method
+            
+                // Update payment method in the order summary
+                document.getElementById('selected-payment').textContent = selectedPayment.value;
+            
+                // 6. Show confirmation alert or message
+                alert('Order confirmed! Thank you for your purchase.');
+            }
+                      
+        </script>
+          
+
+    
+
+
+            <!-- Delivery Information Section -->
+            <section class="delivery-info">
+                <h2>Delivery Information</h2>
+                <form id="delivery-form">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="Enter your name" required>
+                    
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    
+                    <label for="contact-number">Contact Number</label>
+                    <input type="text" id="contact-number" placeholder="Enter your contact number" required>
+    
+                    <label for="address">Address</label>
+                    <textarea id="address" placeholder="Enter delivery address" required></textarea>
+                </form>
+            </section>
+
+
+
+
+<!-- Payment Method Section -->
+<section class="payment-method">
+    <h2>Payment Method</h2>
+    <form id="payment-form">
+        <div class="payment-option">
+            <input type="radio" id="cod" name="payment" value="cod" checked>
+            <label for="cod">
+                <img src="cash-on-delivery.png" alt="COD Icon" class="payment-icon">
+                <p>Cash on Delivery</p>
+            </label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="credit-card" name="payment" value="credit-card">
+            <label for="credit-card">
+                <img src="atm-card.png" alt="Credit/Debit Card Icon" class="payment-icon">
+                <p>Credit/Debit Card</p>
+            </label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="online-payment" name="payment" value="online-payment">
+            <label for="online-payment">
+                <img src="cashless-payment.png" alt="Online Payment Icon" class="payment-icon">
+                <p>Online Payment</p>
+            </label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" id="buy-now-pay-later" name="payment" value="buy-now-pay-later">
+            <label for="buy-now-pay-later">
+                <img src="buy-now-pay-later.png" alt="Buy Now, Pay Later Icon" class="payment-icon" />
+                <p>Buy now, Pay Later</p>
+            </label>
+        </div>
+    </form>
+</section>
+  
+
+
+
+<!-- E-Wallet Modal (Hidden Initially) -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="modal" id="ewallet-modal">
+    <span class="close-modal" id="close-modal" onclick="closeModal()">&times;</span>
+
+    <h3>Select E-Wallet</h3>
+    <div class="e-wallet-options">
+        <div class="e-wallet-option">
+            <img src="gcash-icon.png" alt="GCash" class="payment-icon" onclick="openPaymentApp('gcash')" />
+        </div>
+        <div class="e-wallet-option">
+            <img src="paypal-icon.png" alt="PayPal" class="payment-icon" onclick="openPaymentApp('paypal')" />
+        </div>
+        <div class="e-wallet-option">
+            <img src="paymaya-icon.png" alt="PayMaya" class="payment-icon" onclick="openPaymentApp('paymaya')" />
+        </div>
+        <div class="e-wallet-option">
+            <img src="grabpay-icon.png" alt="GrabPay" class="payment-icon" onclick="openPaymentApp('grabpay')" />
+        </div>
+        <div class="e-wallet-option">
+            <img src="google-pay-icon.png" alt="GooglePay" class="payment-icon" onclick="openPaymentApp('googlepay')" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button onclick="confirmSelection()">Okay</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
+</div>
+
+
+
+    
+
+
+
+
+
+
+<script>
+    // Get the modal and overlay elements
+    const modal = document.getElementById('ewallet-modal');
+    const overlay = document.querySelector('.modal-overlay');
+    
+    // Get the radio button for Online Payment and close button
+    const onlinePaymentRadio = document.getElementById('online-payment');
+    const closeModalButton = document.getElementById('close-modal');
+
+    // Event listener for the online payment radio button
+    onlinePaymentRadio.addEventListener('click', function() {
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+    });
+
+    // Event listener for closing the modal
+    closeModalButton.addEventListener('click', closeModal);
+
+    // Close modal if user clicks outside of it
+    overlay.addEventListener('click', closeModal);
+
+    // Save the selected e-wallet when clicked
+    const ewalletRadios = document.querySelectorAll('input[name="ewallet"]');
+    ewalletRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            const selectedEwallet = document.querySelector('input[name="ewallet"]:checked').value;
+            localStorage.setItem('selectedEwallet', selectedEwallet);
+            alert('Selected E-Wallet: ' + selectedEwallet);
+        });
+    });
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none"; // Hide the modal
+        overlay.style.display = "none"; // Hide the overlay
+    }
+
+    function openPaymentApp(wallet) {
+        let url = '';
+    
+        // Set the URL based on the selected e-wallet
+        switch (wallet) {
+            case 'gcash':
+                url = 'https://www.gcash.com/'; // GCash app link or URL
+                break;
+            case 'paypal':
+                url = 'https://www.paypal.com/'; // PayPal app link or URL
+                break;
+            case 'paymaya':
+                url = 'https://www.paymaya.com/'; // PayMaya app link or URL
+                break;
+            case 'grabpay':
+                url = 'https://www.grab.com/ph/pay/'; // GrabPay app link or URL
+                break;
+            case 'googlepay':
+                url = 'https://pay.google.com/'; // Google Pay app link or URL
+                break;
+            default:
+                alert('Payment option not available');
+                return;
+        }
+    
+        // Open the URL in a new tab
+        window.open(url, '_blank');
+    
+        // Automatically close the modal after selecting the payment option
+        closeModal();
+    
+        // Optional: Record the transaction in localStorage or send to server
+        localStorage.setItem('lastTransaction', `Sent money using ${wallet}`);
+        alert(`Transaction recorded: Sent money using ${wallet}`);
+    }
+    
+    // Function to handle the Okay button action
+    function confirmSelection() {
+        const selectedWallet = document.querySelector('input[name="ewallet"]:checked');
+        
+        if (!selectedWallet) {
+            alert("Please select an e-wallet."); // Alert if no wallet is selected
+            return;
+        }
+    
+        openPaymentApp(selectedWallet.value); // Pass the value of the selected radio button
+    }
+
+        // Record the transaction in localStorage
+        localStorage.setItem('lastTransaction', `Sent money using ${selectedWallet}`);
+        alert(`Transaction recorded: Sent money using ${selectedWallet}`);
+    
+
+
+
+        // Function to select an e-wallet
+function selectEwallet(wallet) {
+    // Remove the selected class from all options
+    const allOptions = document.querySelectorAll('.e-wallet-option');
+    allOptions.forEach(option => {
+        option.classList.remove('selected');
+    });
+
+    // Add the selected class to the clicked option
+    const selectedOption = document.querySelector(`#${wallet}`);
+    selectedOption.parentNode.classList.add('selected'); // Add the selected class to the parent div
+}
+
+// Update the image click event to include selecting the wallet
+document.querySelectorAll('.e-wallet-option').forEach(option => {
+    option.addEventListener('click', function() {
+        const walletId = this.querySelector('input').id; // Get the ID of the radio input
+        selectEwallet(walletId); // Call the function to handle selection
+        // Store the selected value to localStorage or send to server
+        localStorage.setItem('selectedEwallet', walletId);
+    });
+});
+
+// Update the openPaymentApp and confirmSelection functions as necessary
+
+
+
+
+
+
+
+
+
+function editCart() {
+    // Redirect to cart page or show a modal to edit items
+    window.location.href = 'http://127.0.0.1:5500/cart.html'; 
+}
+
+function confirmOrder() {
+    // Gather the order details to be confirmed
+    const productName = document.getElementById('product-name').innerText;
+    const quantity = document.getElementById('quantity').innerText;
+    const price = document.getElementById('price').innerText;
+    const totalPrice = document.getElementById('total-price').innerText;
+    const productImage = document.getElementById('summary-image').src; // Get the image source
+
+    // Here you can proceed with order confirmation logic
+    alert(`Order confirmed!\nProduct: ${productName}\nQuantity: ${quantity}\nPrice: ${price}\nTotal: ${totalPrice}`);
+
+    // Optionally, you can send this data to the server or store in local storage
+    const orderDetails = {
+        productName,
+        quantity,
+        price,
+        totalPrice,
+        productImage
+    };
+    localStorage.setItem('orderDetails', JSON.stringify(orderDetails)); // Save order details
+}
+</script>
+
+
+<script>
+function confirmOrder() {
+    console.log('Confirm Order button clicked'); // For debugging
+
+    // Get the order items and total price
+    const orderItemsContainer = document.getElementById('order-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Check if there are order items and a total price
+    if (!orderItemsContainer.innerHTML || !totalPriceElement.innerHTML) {
+        alert('Please add items to your cart before confirming the order.');
+        return;
+    }
+
+    const orderItems = orderItemsContainer.innerHTML;
+    const totalPrice = totalPriceElement.innerHTML;
+
+    // Display order confirmation message
+    const statusMessage = document.createElement('div');
+    statusMessage.className = 'order-status';
+    statusMessage.innerHTML = `
+        <h3>Order Confirmation</h3>
+        <p>Order confirmed!</p>
+        <p>Items: ${orderItems}</p>
+        <p>Total Amount: ${totalPrice}</p>
+        <p>Status: To Pay</p>
+    `;
+    
+    // Append status message to the order summary
+    document.querySelector('.order-summary').appendChild(statusMessage);
+
+    // Simulate status updates with timeouts
+    setTimeout(() => {
+        statusMessage.innerHTML += '<br>Status: To Ship';
+    }, 5000); // Update to "To Ship" after 5 seconds
+
+    setTimeout(() => {
+        statusMessage.innerHTML += '<br>Status: To Receive';
+    }, 10000); // Update to "To Receive" after 10 seconds
+}
+</script>
+
+</div>
+</div>
+</div>
+</section>
+
+    <footer class="footer">
+
+        <div class="social">
+            <a href=""><i class='bx bxl-facebook-circle'></i></a>
+            <a href=""><i class='bx bxl-linkedin-square'></i></a>
+            <a href=""><i class='bx bxl-twitter' ></i></a>
+            <a href=""><i class='bx bxl-instagram-alt' ></i></a>
+        </div>
+
+
+        <ul class="link">
+            <li>
+                <a href="">FAQ</a>
+            </li>
+            <li>
+                <a href="">Service</a>
+            </li>
+            <li>
+                <a href="">About Me</a>
+            </li>
+            <li>
+                <a href="">Contact</a>
+            </li>
+            <li>
+                <a href="">Privacy Policy</a>
+            </li>
+        </ul>
+
+
+        <p class="copyright">© 2024 Valerie Sumo | All Rights Reserved</p>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+

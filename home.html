@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valerie's Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+  
+
+    <video autoplay muted loop id="myVideo">
+        <source src="rain.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="portfolio.html"></a><span>VAL</span>ERIE</a>
+        </div>
+  
+    <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger Icon -->
+    <ul id="nav-links" class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="lookbook.html">Lookbook</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html">
+            <li><a href="cart.html"><img src="cart-icon.png" alt="Cart" id="cart-icon"></a></li>
+        </ul>
+    </nav>
+
+
+    <script>
+        // Get the hamburger and nav-links elements
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        // Add click event listener to the hamburger icon
+        hamburger.addEventListener('click', () => {
+            // Toggle the 'active' class to show or hide the nav links
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+    
+<header class="home-header">
+    <h1>WELCOME TO VALERIE'S CLOTHING STYLES</h1>
+    <p>Your one-stop destination for fashionable clothing!</p>
+</div>
+            <button class="shop-now-btn" onclick="location.href='shop.html';">Shop Now</button>
+        </header>
+        
+    <footer class="footer">
+
+        <div class="social">
+            <a href=""><i class='bx bxl-facebook-circle'></i>
+            <a href=""><i class='bx bxl-linkedin-square'></i>
+            <a href=""><i class='bx bxl-twitter'></i>
+            <a href=""><i class='bx bxl-instagram-alt'></i>
+        </div>
+
+
+        <ul class="link">
+            <li>
+                <a href="">FAQ</a>
+            </li>
+            <li>
+                <a href="">Service</a>
+            </li>
+            <li>
+                <a href="">About Me</a>
+            </li>
+            <li>
+                <a href="">Contact</a>
+            </li>
+            <li>
+                <a href="">Privacy Policy</a>
+            </li>
+        </ul>
+
+
+        <p class="copyright">© 2024 Valerie Sumo | All Rights Reserved</p>
+    </footer>
+    <script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+        
+        function myFunction() {
+          if (video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+          } else {
+            video.pause();
+            btn.innerHTML = "Play";
+          }
+        }
+        </script>
+        
+    <script src="script.js"></script>
+</body>
+</html>
